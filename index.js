@@ -23,7 +23,9 @@ connectToDatabase('mongodb+srv://narayana:Narayana1997@bob.ajbel4v.mongodb.net/d
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({
+    origin:'*'
+}));
 app.use(helmet());
 
 // Basic route that returns 'Hello'
