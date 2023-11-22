@@ -1,0 +1,315 @@
+[{
+  "_id": {
+    "$oid": "6559479130ca7d0b46252d2e"
+  },
+  "cardName": "What is the change",
+  "cardNumber": 0,
+  "cardInfo": [
+    {
+      "heading": "Define your solution and what is going to give you a competitive advantage.",
+      "text": "uyuy",
+      "placeholder": "I am creating Uber with Horses. This is because horses do not release as much carbon as cars. It would also be a unique experience for those looking to commute somewhere.",
+      "_id": {
+        "$oid": "655949738f6b4db61e300dbb"
+      }
+    }
+  ],
+  "started": true,
+  "complete": true,
+  "selected": false,
+  "locked": false,
+  "type": "none_future",
+  "open": true,
+  "bmc_status": ""
+},
+{
+  "_id": {
+    "$oid": "6559479130ca7d0b46252d2f"
+  },
+  "cardName": "What is the Moonshot",
+  "cardNumber": 1,
+  "cardInfo": [
+    {
+      "heading": "Define your ultimate goal.",
+      "text": "okay\n",
+      "placeholder": "Horser is now a horse rental and dealership company. People prefer to use horses due to their environmental benefits. We have lobbied governments to rework infrastructure to support horses and carriages.",
+      "_id": {
+        "$oid": "655949738f6b4db61e300dbc"
+      }
+    }
+  ],
+  "selected": false,
+  "started": true,
+  "complete": true,
+  "locked": false,
+  "type": "none_future",
+  "open": true,
+  "bmc_status": ""
+},
+{
+  "_id": {
+    "$oid": "6559479130ca7d0b46252d30"
+  },
+  "cardName": "Future 1",
+  "cardNumber": 2,
+  "cardSubName": "The short-term vision for your company",
+  "cardInfo": [
+    {
+      "heading": "Problem to be solved",
+      "text": "dsds",
+      "placeholder": "Define the problems that you must solve in the short term",
+      "_id": {
+        "$oid": "655949738f6b4db61e300dbd"
+      }
+    },
+    {
+      "heading": "Hypothesis",
+      "text": "dsds",
+      "placeholder": "If you solve your short-term problem highlighted above, what will be the positive outcomes for your users/customers",
+      "_id": {
+        "$oid": "655949738f6b4db61e300dbe"
+      }
+    },
+    {
+      "heading": "Envisaged Timeframe",
+      "text": "dsds",
+      "placeholder": "12 months, 1-2 years etc.",
+      "_id": {
+        "$oid": "655949738f6b4db61e300dbf"
+      }
+    }
+  ],
+  "selected": false,
+  "started": true,
+  "complete": true,
+  "locked": false,
+  "type": "future_bmc",
+  "open": true,
+  "bmc_status": ""
+},
+{
+  "_id": {
+    "$oid": "6559479130ca7d0b46252d31"
+  },
+  "cardName": "Future 1 (OKRs)",
+  "cardNumber": 3,
+  "cardSubName": "The short-term objectives and key results for your company",
+  "cardInfo": [
+    {
+      "heading": "How you measure impact",
+      "text": "dsdsd",
+      "placeholder": "In this section, clearly define how you plan to keep track of your company's short-term impact",
+      "_id": {
+        "$oid": "655949738f6b4db61e300dc0"
+      }
+    },
+    {
+      "heading": "Predicted Objective Key Results (OKRs)",
+      "text": "dsds",
+      "placeholder": "In this section, define your short-term objectives and quantifiable key results.",
+      "_id": {
+        "$oid": "655949738f6b4db61e300dc1"
+      }
+    }
+  ],
+  "selected": false,
+  "started": true,
+  "complete": true,
+  "locked": false,
+  "type": "future_okr",
+  "open": true,
+  "bmc_status": ""
+},
+{
+  "_id": {
+    "$oid": "6559479130ca7d0b46252d32"
+  },
+  "cardName": "BMC",
+  "cardNumber": 4,
+  "selected": true,
+  "locked": false,
+  "open": false,
+  "complete": false,
+  "type": "future_1_bmc",
+  "bmc_status": "",
+  "started": false,
+  "cardInfo": []
+},
+{
+  "_id": {
+    "$oid": "6559479130ca7d0b46252d33"
+  },
+  "cardName": "Future 2",
+  "cardNumber": 5,
+  "cardSubName": "The medium-term vision for your company",
+  "cardInfo": [
+    {
+      "heading": "Problem to be solved",
+      "text": "",
+      "placeholder": "Define the problems that you must solve in the medium term",
+      "_id": {
+        "$oid": "655949738f6b4db61e300dc2"
+      }
+    },
+    {
+      "heading": "Hypothesis",
+      "text": "",
+      "placeholder": "If you solve your medium-term problem highlighted above, what will be the positive outcomes for your users/customers",
+      "_id": {
+        "$oid": "655949738f6b4db61e300dc3"
+      }
+    },
+    {
+      "heading": "Envisaged Timeframe",
+      "text": "",
+      "placeholder": "24 months, 3-5 years etc.",
+      "_id": {
+        "$oid": "655949738f6b4db61e300dc4"
+      }
+    }
+  ],
+  "selected": false,
+  "started": false,
+  "complete": false,
+  "locked": true,
+  "type": "future_bmc",
+  "open": false,
+  "bmc_status": ""
+},
+{
+  "_id": {
+    "$oid": "6559479130ca7d0b46252d34"
+  },
+  "cardNumber": 6,
+  "cardName": "Future 2 (OKRs)",
+  "cardSubName": "The medium-term objectives and key results for your company",
+  "cardInfo": [
+    {
+      "heading": "How you measure impact",
+      "text": "",
+      "placeholder": "In this section, clearly define how you plan to keep track of your company's medium-term impact",
+      "_id": {
+        "$oid": "655949738f6b4db61e300dc5"
+      }
+    },
+    {
+      "heading": "Predicted Objective Key Results (OKRs)",
+      "text": "",
+      "placeholder": "In this section, define your medium-term objectives and quantifiable key results.",
+      "_id": {
+        "$oid": "655949738f6b4db61e300dc6"
+      }
+    }
+  ],
+  "selected": false,
+  "started": false,
+  "complete": false,
+  "locked": true,
+  "type": "future_okr",
+  "open": false,
+  "bmc_status": ""
+},
+{
+  "_id": {
+    "$oid": "6559479130ca7d0b46252d35"
+  },
+  "cardNumber": 7,
+  "cardName": "BMC",
+  "selected": false,
+  "locked": true,
+  "open": false,
+  "complete": false,
+  "type": "future_2_bmc",
+  "bmc_status": "",
+  "started": false,
+  "cardInfo": []
+},
+{
+  "_id": {
+    "$oid": "6559479130ca7d0b46252d36"
+  },
+  "cardNumber": 8,
+  "cardName": "Future 3",
+  "cardSubName": "The long-term vision for your company",
+  "cardInfo": [
+    {
+      "heading": "Problem to be solved",
+      "text": "",
+      "placeholder": "Define the problems that you must solve in the long term.",
+      "_id": {
+        "$oid": "655949738f6b4db61e300dc7"
+      }
+    },
+    {
+      "heading": "Hypothesis",
+      "text": "",
+      "placeholder": "If you solve your long-term problem highlighted above, what will be the positive outcomes for your users/customers",
+      "_id": {
+        "$oid": "655949738f6b4db61e300dc8"
+      }
+    },
+    {
+      "heading": "Envisaged Timeframe",
+      "text": "",
+      "placeholder": "36 months, 5+ years etc",
+      "_id": {
+        "$oid": "655949738f6b4db61e300dc9"
+      }
+    }
+  ],
+  "selected": false,
+  "started": false,
+  "complete": false,
+  "locked": true,
+  "type": "future_bmc",
+  "bmc_status": "",
+  "open": false
+},
+{
+  "_id": {
+    "$oid": "6559479130ca7d0b46252d37"
+  },
+  "cardNumber": 9,
+  "cardName": "Future 3 (OKRs)",
+  "cardSubName": "The long-term objectives and key results for your company",
+  "cardInfo": [
+    {
+      "heading": "How you measure impact",
+      "text": "",
+      "placeholder": "In this section, clearly define how you plan to keep track of your company's long-term impact",
+      "_id": {
+        "$oid": "655949738f6b4db61e300dca"
+      }
+    },
+    {
+      "heading": "Predicted Objective Key Results (OKRs)",
+      "text": "",
+      "placeholder": "In this section, define your long-term objectives and quantifiable key results.",
+      "_id": {
+        "$oid": "655949738f6b4db61e300dcb"
+      }
+    }
+  ],
+  "selected": false,
+  "started": false,
+  "complete": false,
+  "locked": true,
+  "type": "future_okr",
+  "open": false,
+  "bmc_status": ""
+},
+{
+  "_id": {
+    "$oid": "6559479130ca7d0b46252d38"
+  },
+  "cardNumber": 10,
+  "cardName": "BMC",
+  "selected": false,
+  "locked": true,
+  "open": false,
+  "type": "future_3_bmc",
+  "bmc_status": "",
+  "complete": false,
+  "started": false,
+  "cardInfo": []
+}]
