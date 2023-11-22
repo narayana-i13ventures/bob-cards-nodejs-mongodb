@@ -24,7 +24,9 @@ connectToDatabase('mongodb+srv://narayana:Narayana1997@bob.ajbel4v.mongodb.net/d
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
-    origin:'*'
+    origin: 'http://localhost:3000',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
 }));
 app.use(helmet());
 
