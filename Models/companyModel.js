@@ -34,8 +34,6 @@ const companySchema = new schema(
         businessModel: {
             type: String
         }
-    },{
-        timestamps:true
     }
 );
 
@@ -64,11 +62,11 @@ companySchema.statics.createCompany = async (companyData) => {
 // Static method to get all companies
 companySchema.statics.getAllCompanies = async () => {
     try {
-        const companies = await Company.find().sort({ createdAt: -1 }); // Sort in descending order by createdAt
+        const companies = await Company.find();
         if (companies.length > 0) {
-            return companies[0]; // Return the latest added company
+            return companies[0];
         } else {
-            return {};
+            return {}
         }
     } catch (error) {
         throw new Error('Error fetching companies: ' + error.message);

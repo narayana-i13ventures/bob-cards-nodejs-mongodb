@@ -10,6 +10,7 @@ import Future2BMCRouter from './Router/Future2BMCRouter.js'
 import Future3BMCRouter from './Router/Future3BMCRouter.js'
 import Future1CVPRouter from './Router/Future1CVPRouter.js'
 import ThinkBeyondRouter from './Router/ThinkBeyondRouter.js';
+import MenuRouter from './Router/MenuRouter.js'
 import Card from './Models/CardModel.js';
 
 dotenv.config();
@@ -24,7 +25,7 @@ connectToDatabase(process.env.MONGODB_URL);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
-    origin: ['http://localhost:3000','https://bob-ui-v-2-narayanas-projects.vercel.app','https://bob-ui-v-2-git-main-narayanas-projects.vercel.app','https://bob-ui-v-2.vercel.app'],
+    origin: ['http://localhost:3000','https://bob-ui-v-2-narayanas-projects.vercel.app','https://bob-ui-v-2-git-main-narayanas-projects.vercel.app','https://bob-ui-v-2.vercel.app/'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
 }));
@@ -40,6 +41,7 @@ app.use('/future_1', Future1BMCRouter);
 app.use('/future_2', Future2BMCRouter);
 app.use('/future_3', Future3BMCRouter);
 app.use('/future_1', Future1CVPRouter);
+app.use('/Menu', MenuRouter);
 app.use('/', ThinkBeyondRouter);
 
 // Error handling middleware
