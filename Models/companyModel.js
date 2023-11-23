@@ -34,6 +34,8 @@ const companySchema = new schema(
         businessModel: {
             type: String
         }
+    },{
+        timestamps:true
     }
 );
 
