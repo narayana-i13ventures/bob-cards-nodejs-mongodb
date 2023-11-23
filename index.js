@@ -25,7 +25,7 @@ connectToDatabase(process.env.MONGODB_URL);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
-    origin: ['http://localhost:3000','https://bob-ui-v-2-narayanas-projects.vercel.app','https://bob-ui-v-2-git-main-narayanas-projects.vercel.app','https://bob-ui-v-2.vercel.app/'],
+    origin: ['http://localhost:3000','https://bob-ui-v-2-narayanas-projects.vercel.app','https://bob-ui-v-2-git-main-narayanas-projects.vercel.app','https://bob-ui-v-2.vercel.app'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
 }));
