@@ -18,13 +18,13 @@ const app = express();
 const port = process.env.PORT;
 
 // Connect to MongoDB (replace 'your-connection-string' with your actual MongoDB connection string)
-connectToDatabase('mongodb+srv://narayana:Narayana1997@bob.ajbel4v.mongodb.net/data');
+connectToDatabase(process.env.MONGODB_URL);
 
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000','https://bob-ui-v-2-narayanas-projects.vercel.app','https://bob-ui-v-2-git-main-narayanas-projects.vercel.app','https://bob-ui-v-2.vercel.app'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
 }));
