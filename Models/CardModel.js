@@ -443,6 +443,8 @@ cardSchema.statics.resetFuture1CVP = async function () {
 
 
 cardSchema.statics.prefillFuture1BMC = async (data) => {
+    const updatedData = []; // Array to store updated cards
+
     for (const key of Object.keys(data)) {
         const cardName = key;
         const content = data[key].content;
@@ -455,6 +457,7 @@ cardSchema.statics.prefillFuture1BMC = async (data) => {
                 { new: true }
             );
             if (updatedCard) {
+                updatedData.push(updatedCard); // Store the updated card in the array
                 console.log(`Updated card for ${cardName}`);
             } else {
                 console.log(`Card not found for ${cardName}`);
@@ -463,8 +466,13 @@ cardSchema.statics.prefillFuture1BMC = async (data) => {
             console.error(`Error updating BMC card for ${cardName}: ${error.message}`);
         }
     }
+
+    return updatedData; // Return the array of updated cards
 }
+
 cardSchema.statics.prefillFuture1CVP = async (data) => {
+    const updatedData = []; // Array to store updated cards
+
     for (const key of Object.keys(data)) {
         const cardName = key;
         const content = data[key].content;
@@ -477,6 +485,7 @@ cardSchema.statics.prefillFuture1CVP = async (data) => {
                 { new: true }
             );
             if (updatedCard) {
+                updatedData.push(updatedCard); // Store the updated card in the array
                 console.log(`Updated card for ${cardName}`);
             } else {
                 console.log(`Card not found for ${cardName}`);
@@ -485,7 +494,10 @@ cardSchema.statics.prefillFuture1CVP = async (data) => {
             console.error(`Error updating CVP card for ${cardName}: ${error.message}`);
         }
     }
+
+    return updatedData; // Return the array of updated cards
 }
+
 
 
 const Card = mongoose.model('card', cardSchema);
