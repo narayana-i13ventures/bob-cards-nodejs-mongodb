@@ -25,8 +25,8 @@ router.get('/BMC/chat', async (req, res) => {
 
 router.post('/BMC/nextCard', async (req, res) => {
     try {
-        const { cardId } = req?.body;
-        const response = await Card.Future3BMCNextCard(cardId);
+        const card = req?.body;
+        const response = await Card.Future3BMCNextCard(card);
         res.status(200).json(response);
     } catch (error) {
         console.error(error);

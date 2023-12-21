@@ -77,17 +77,21 @@ ThinkBeyondSchema.statics.updateThinkBeyond = async function (card) {
     }
 };
 
-ThinkBeyondSchema.statics.nextCard = async function (cardId) {
+ThinkBeyondSchema.statics.nextCard = async function (card) {
     try {
-        const currentCard = await this.findById(cardId);
+        let currentCard = await this.findById(card?.id);
 
         if (!currentCard) {
             throw new Error('Card not found.');
         }
 
-        // Mark the current card as complete and unselected
-        currentCard.complete = true;
+        for (const prop in card) {
+            if (card.hasOwnProperty(prop)) {
+                currentCard[prop] = card[prop];
+            }
+        }
         currentCard.selected = false;
+        currentCard.complete = true;
         await currentCard.save();
 
         const updatedCards = [currentCard];
@@ -115,7 +119,6 @@ ThinkBeyondSchema.statics.nextCard = async function (cardId) {
             const nextCard = await this.findOne({ cardNumber: nextCardNumber });
 
             if (nextCard) {
-                // Unlock and select the next card
                 nextCard.locked = false;
                 nextCard.selected = true;
                 await nextCard.save();

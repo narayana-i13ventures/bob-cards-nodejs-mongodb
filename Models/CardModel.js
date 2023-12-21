@@ -57,7 +57,50 @@ const cardSchema = new Schema({
     surety: {
         type: Number,
         default: 0
-    }
+    },
+    userLock: {
+        type: Boolean,
+        default: false
+    },
+    color: {
+        type: String,
+        default: '#fff'
+    },
+    comments: [
+        {
+            content: {
+                type: String
+            },
+            userId: {
+                type: String
+            },
+            userName: {
+                type: String
+            },
+            liked: {
+                type: Boolean,
+                default: false
+            }
+        }
+    ],
+    shared: [
+        {
+            username: {
+                type: String
+            },
+            email: {
+                type: String
+            },
+            role: {
+                type: String
+            },
+            owner: {
+                type: Boolean
+            },
+
+        }
+    ]
+
 }, {
     versionKey: false
 });
@@ -86,6 +129,95 @@ cardSchema.statics.updateCard = async function (card) {
     }
 };
 
+cardSchema.statics.resetCard = async function (card) {
+    try {
+        const defaultValues = {
+            selected: true,
+            keyPoints: '',
+            locked: true,
+            loadingKeyPoints: false,
+            chat: [],
+            surety: 0,
+        };
+
+        // Use spread operators separately for card and defaultValues
+        const updatedCard = await this.findByIdAndUpdate(card?.id, { ...card, ...defaultValues }, { new: true });
+
+        return updatedCard;
+    } catch (error) {
+        throw new Error(`Error resetting card: ${error.message}`);
+    }
+};
+
+cardSchema.statics.addComment = async function (cardId, comment) {
+    try {
+        const card = await this.findById(cardId);
+        if (!card) {
+            throw new Error('Card not found.');
+        }
+
+        card.comments.push(comment);
+        await card.save();
+
+        return card;
+    } catch (error) {
+        throw new Error(`Error adding comment: ${error.message}`);
+    }
+};
+
+cardSchema.statics.deleteComment = async function (cardId, commentId, username) {
+    try {
+        const card = await this.findById(cardId);
+        if (!card) {
+            throw new Error('Card not found.');
+        }
+        // Use filter to exclude the comment with the specified commentId
+        card.comments = card.comments.filter(comment => comment.id !== commentId);
+        await card.save();
+        return { success: true };
+    } catch (error) {
+        throw new Error(`Error deleting comment: ${error.message}`);
+    }
+};
+
+cardSchema.statics.addSharedUser = async function (cardId, sharedUser) {
+    try {
+        const card = await this.findById(cardId);
+        if (!card) {
+            throw new Error('Card not found.');
+        }
+
+        card.shared.push(sharedUser);
+        await card.save();
+
+        return card;
+    } catch (error) {
+        throw new Error(`Error adding shared user: ${error.message}`);
+    }
+};
+
+cardSchema.statics.deleteSharedUser = async function (cardId, sharedUserId) {
+    try {
+        const card = await this.findById(cardId);
+        if (!card) {
+            throw new Error('Card not found.');
+        }
+
+        const sharedUserIndex = card.shared.findIndex(user => user._id.toString() === sharedUserId);
+        if (sharedUserIndex === -1) {
+            throw new Error('Shared user not found.');
+        }
+
+        card.shared.splice(sharedUserIndex, 1);
+        await card.save();
+
+        return { success: true };
+    } catch (error) {
+        throw new Error(`Error deleting shared user: ${error.message}`);
+    }
+}
+
+//________________Future 1________________________
 
 cardSchema.statics.getFuture1BMC = async function () {
     try {
@@ -95,11 +227,17 @@ cardSchema.statics.getFuture1BMC = async function () {
     }
 };
 
-cardSchema.statics.Future1BMCNextCard = async function (cardId) {
+cardSchema.statics.Future1BMCNextCard = async function (card) {
     try {
-        const currentCard = await this.findOne({ _id: cardId, future: 1, cardCanvas: 'Business Model Canvas' });
+        let currentCard = await this.findOne({ _id: card?.id, future: 1, cardCanvas: 'Business Model Canvas' });
         if (!currentCard) {
             throw new Error('Card not found.');
+        }
+
+        for (const prop in card) {
+            if (card.hasOwnProperty(prop)) {
+                currentCard[prop] = card[prop];
+            }
         }
         currentCard.complete = true;
         currentCard.selected = false;
@@ -124,7 +262,7 @@ cardSchema.statics.Future1BMCNextCard = async function (cardId) {
 
         return updatedCards;
     } catch (error) {
-        throw new Error('Error in Future1BMCNextCard function: ' + error.message);
+        throw new Error('Error in Future1 BMCNextCard function: ' + error.message);
     }
 };
 
@@ -180,10 +318,6 @@ cardSchema.statics.resetFuture1BMC = async function () {
     }
 };
 
-
-
-
-
 //________________Future 2________________________
 
 cardSchema.statics.getFuture2BMC = async function () {
@@ -194,11 +328,17 @@ cardSchema.statics.getFuture2BMC = async function () {
     }
 };
 
-cardSchema.statics.Future2BMCNextCard = async function (cardId) {
+cardSchema.statics.Future2BMCNextCard = async function (card) {
     try {
-        const currentCard = await this.findOne({ _id: cardId, future: 2, cardCanvas: 'Business Model Canvas' });
+        let currentCard = await this.findOne({ _id: card?.id, future: 2, cardCanvas: 'Business Model Canvas' });
         if (!currentCard) {
             throw new Error('Card not found.');
+        }
+
+        for (const prop in card) {
+            if (card.hasOwnProperty(prop)) {
+                currentCard[prop] = card[prop];
+            }
         }
         currentCard.complete = true;
         currentCard.selected = false;
@@ -223,7 +363,7 @@ cardSchema.statics.Future2BMCNextCard = async function (cardId) {
 
         return updatedCards;
     } catch (error) {
-        throw new Error('Error in Future2 BMC NextCard function: ' + error.message);
+        throw new Error('Error in Future2 BMCNextCard function: ' + error.message);
     }
 };
 
@@ -291,11 +431,17 @@ cardSchema.statics.getFuture3BMC = async function () {
     }
 };
 
-cardSchema.statics.Future3BMCNextCard = async function (cardId) {
+cardSchema.statics.Future3BMCNextCard = async function (card) {
     try {
-        const currentCard = await this.findOne({ _id: cardId, future: 3, cardCanvas: 'Business Model Canvas' });
+        let currentCard = await this.findOne({ _id: card?.id, future: 3, cardCanvas: 'Business Model Canvas' });
         if (!currentCard) {
             throw new Error('Card not found.');
+        }
+
+        for (const prop in card) {
+            if (card.hasOwnProperty(prop)) {
+                currentCard[prop] = card[prop];
+            }
         }
         currentCard.complete = true;
         currentCard.selected = false;
@@ -320,7 +466,7 @@ cardSchema.statics.Future3BMCNextCard = async function (cardId) {
 
         return updatedCards;
     } catch (error) {
-        throw new Error('Error in Future2 BMC NextCard function: ' + error.message);
+        throw new Error('Error in Future3 BMCNextCard function: ' + error.message);
     }
 };
 
@@ -441,7 +587,6 @@ cardSchema.statics.resetFuture1CVP = async function () {
 
 
 
-
 cardSchema.statics.prefillFuture1BMC = async (data) => {
     const updatedData = []; // Array to store updated cards
 
@@ -485,7 +630,7 @@ cardSchema.statics.prefillFuture1CVP = async (data) => {
                 { new: true }
             );
             if (updatedCard) {
-                updatedData.push(updatedCard); // Store the updated card in the array
+                updatedData.push(await updatedCard); // Store the updated card in the array
                 console.log(`Updated card for ${cardName}`);
             } else {
                 console.log(`Card not found for ${cardName}`);
@@ -497,7 +642,6 @@ cardSchema.statics.prefillFuture1CVP = async (data) => {
 
     return updatedData; // Return the array of updated cards
 }
-
 
 
 const Card = mongoose.model('card', cardSchema);

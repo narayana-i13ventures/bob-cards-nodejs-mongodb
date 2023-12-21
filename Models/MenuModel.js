@@ -52,7 +52,7 @@ methodologySchema.statics.setMenu = async function (data) {
 
         // Update the document with the specified data
         const response = await Methodology.findOneAndUpdate(
-            { methodology: 'ThinkBeyond' }, 
+            { methodology: 'ThinkBeyond' },
             { frameworks: data.frameworks },
             { new: true }
         );

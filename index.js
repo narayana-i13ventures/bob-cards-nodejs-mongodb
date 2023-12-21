@@ -17,7 +17,7 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT;
-
+A
 // Connect to MongoDB (replace 'your-connection-string' with your actual MongoDB connection string)
 connectToDatabase(process.env.MONGODB_URL);
 
@@ -25,7 +25,7 @@ connectToDatabase(process.env.MONGODB_URL);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
-    origin: ['http://localhost:3000','https://bob-ui-v-2-narayanas-projects.vercel.app','https://bob-ui-v-2-git-main-narayanas-projects.vercel.app','https://bob-ui-v-2.vercel.app'],
+    origin: ['http://localhost:3000', 'https://bob-ui-v-2-narayanas-projects.vercel.app', 'https://bob-ui-v-2-git-main-narayanas-projects.vercel.app', 'https://bob-ui-v-2.vercel.app'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
 }));
@@ -49,6 +49,7 @@ app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something went wrong!');
 });
+
 app.post('/updateCard', async (req, res) => {
     try {
         const { data } = req?.body;
@@ -57,6 +58,56 @@ app.post('/updateCard', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Error updating Card' });
+    }
+});
+
+app.post('/resetCard', async (req, res) => {
+    try {
+        const data = req?.body;
+        const response = await Card.resetCard(data);
+        res.status(200).json(response);
+    } catch (error) {
+        res.status(500).json({ error: 'Error resetting Card' });
+    }
+});
+
+app.post('/add-comment', async (req, res) => {
+    try {
+        const { cardId, comment } = req?.body;
+        const response = await Card.addComment(cardId, comment);
+        res.status(200).json(response);
+    } catch (error) {
+        res.status(500).json({ error: 'Error adding comment', message: error.message });
+    }
+});
+
+app.post('/delete-comment', async (req, res) => {
+    try {
+        const { cardId, commentId, userName } = req?.body;
+        const response = await Card.deleteComment(cardId, commentId, userName);
+        res.status(200).json(response);
+    } catch (error) {
+        res.status(500).json({ error: 'Error deleting comment', message: error.message });
+    }
+});
+
+app.post('/add-shared-user', async (req, res) => {
+    try {
+        const { cardId, sharedUser } = req?.body;
+        const response = await Card.addSharedUser(cardId, sharedUser);
+        res.status(200).json(response);
+    } catch (error) {
+        res.status(500).json({ error: 'Error adding shared user', message: error.message });
+    }
+});
+
+app.post('/delete-shared-user', async (req, res) => {
+    try {
+        const { cardId, sharedUserId } = req?.body;
+        const response = await Card.deleteSharedUser(cardId, sharedUserId);
+        res.status(200).json(response);
+    } catch (error) {
+        res.status(500).json({ error: 'Error deleting shared user', message: error.message });
     }
 });
 
