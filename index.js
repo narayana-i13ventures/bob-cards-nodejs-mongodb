@@ -52,11 +52,10 @@ app.use((err, req, res, next) => {
 
 app.post('/updateCard', async (req, res) => {
     try {
-        const { data } = req?.body;
-        const updatedCard = await Card.updateCard(data);
-        res.status(200).json(updatedCard);
+        const data = req?.body;
+        const response = await Card.updateCard(data);
+        res.status(200).json(response);
     } catch (error) {
-        console.error(error);
         res.status(500).json({ error: 'Error updating Card' });
     }
 });
